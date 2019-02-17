@@ -3,6 +3,7 @@ from .hashmap import HashMap
 
 class LinearHashing(HashMap):
     def get(self, key):
+        """Returns the value for the given key."""
         index = self.h(key)
         while self.H[index].key is not None and self.H[index].key != key:
             index = (index+1) % self.capacity
@@ -10,6 +11,10 @@ class LinearHashing(HashMap):
         return self.H[index].value
 
     def remove(self, key):
+        """
+        Removes the node for the key and rearrange
+        all the subsequent not None items for further searches.
+        """
         index = self.h(key)
         if self.H[index].key is None:
             return
@@ -31,6 +36,10 @@ class LinearHashing(HashMap):
         self.H[i].value = None
 
     def put(self, key, value):
+        """
+        Tries to insert at the hash index. If not empty,
+        inserts at the subsequent empty slot. Rehashes if required.
+        """
         index = self.h(key)
         while self.H[index].key is not None and self.H[index].key != key:
             index = (index+1) % self.capacity

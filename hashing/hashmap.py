@@ -17,6 +17,7 @@ class HashMap():
         return self.put(key, value)
 
     def put(self, key, value):
+        """Puts the given value at the hash index for the given key."""
         node = self.H[self.h(key)]
         if node.key is None:
             self.count += 1
@@ -27,15 +28,18 @@ class HashMap():
         self.rehashIfRequired()
 
     def h(self, key):
+        """Returns hash value used to index the hash table."""
         return abs(hash(key) % self.capacity)
 
     def get(self, key):
+        """Returns a value for the given key."""
         node = self.H[self.h(key)]
         if node.key != key:
             return None
         return node.value
 
     def remove(self, key):
+        """Removes the node from the hashtable if it exists."""
         if self[key] is None:
             return
 
@@ -43,6 +47,10 @@ class HashMap():
         self[key] = None
 
     def rehashIfRequired(self):
+        """
+        Doubles the hashtable size and rehashes every element
+        if the load factor exceeds the required level.
+        """
         if self.getLoadFactor() > self.load_factor:
             H = self.H
             self.capacity = 2 * self.capacity

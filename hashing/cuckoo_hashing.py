@@ -8,12 +8,14 @@ class CuckooHashing(HashMap):
         self.H1 = [(None, None) for _ in range(self.capacity)]
 
     def get(self, key):
+        """Returns the value if the key exists in either of the two hashtables."""
         if self.H0[self.h0(key)][0] == key:
             return self.H0[self.h0(key)][1]
 
         return self.H1[self.h1(key)][1]
 
     def put(self, key, value):
+        """Inserts the value at one hashtable and rearranges + rehashes if required."""
         k, v = key, value
         self.count += 1
         t, c = 0, 0
@@ -35,6 +37,7 @@ class CuckooHashing(HashMap):
             self.rehash()
 
     def remove(self, key):
+        """Remove the key from the hashtable in which it exists."""
         if self.H0[self.h0(key)][0] == key or self.H1[self.h1(key)][0] == key:
             self.count -= 1
 
@@ -45,17 +48,27 @@ class CuckooHashing(HashMap):
             self.H1[self.h1(key)] = (None, None)
 
     def h0(self, key):
+        """Hash function used to index H0."""
         return abs(hash(key) % self.capacity)
 
     def h1(self, key):
+        """Hash function used to index H1."""
         return abs((hash(key) // self.capacity) % self.capacity)
 
     def getHashTableAndFunction(self, t):
+        """Returns (h0, H0) if t = 0, returns (h1, H1) if not.
+        
+        Args:
+            t (int): The integert representing the hashtable
+                        and hash function to use. (0 or 1)
+        
+        """
         if t == 0:
             return (self.H0, self.h0)
         return (self.H1, self.h1)
 
     def rehash(self):
+        """Rehash the two hashtables by creating new hashtables double the size."""
         H0 = self.H0
         H1 = self.H1
         self.capacity = 2 * self.capacity

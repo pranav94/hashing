@@ -3,6 +3,7 @@ from .hashmap import HashMap
 
 class QuadraticHashing(HashMap):
     def get(self, key):
+        """Returns the value for the given key."""
         i = self.h(key)
         count = 0
         while self.H[i].key is not None and self.H[i].key != key:
@@ -12,6 +13,10 @@ class QuadraticHashing(HashMap):
         return self.H[i].value
 
     def remove(self, key):
+        """
+        Removes the node for the key and rearrange
+        all the subsequent not None items for further searches.
+        """
         i = self.h(key)
         count = 0
         if self.H[i].key is None:
@@ -36,6 +41,10 @@ class QuadraticHashing(HashMap):
         self.H[i].value = None
 
     def put(self, key, value):
+        """
+        Tries to insert at the hash index. If not empty,
+        inserts at the subsequent empty slot. Rehashes if required.
+        """
         i = self.h(key)
         count = 0
         while self.H[i].key is not None and self.H[i].key != key:
