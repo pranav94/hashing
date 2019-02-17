@@ -1,6 +1,6 @@
 import random
 
-from .base import Base
+from tests.base import Base
 from hashing.cuckoo_hashing import CuckooHashing as HashMap
 
 print("-------------------------------------------")

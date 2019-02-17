@@ -1,6 +1,6 @@
 import random
 
-from .base import Base
+from tests.base import Base
 from hashing.chain_hashing import ChainHashing as HashMap
 
 print("-------------------------------------------")

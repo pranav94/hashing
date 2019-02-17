@@ -1,6 +1,6 @@
 import random
 
-from .base import Base
+from tests.base import Base
 from hashing.linear_hashing import LinearHashing as HashMap
 
 print("-------------------------------------------")

@@ -1,6 +1,6 @@
 import random
 
-from .base import Base
+from tests.base import Base
 from hashing.quadratic_hashing import QuadraticHashing as HashMap
 
 print("-------------------------------------------")
