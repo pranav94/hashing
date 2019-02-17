@@ -11,13 +11,13 @@ class ChainHashing(HashMap):
         if node.key == key:
             node.value = value
         else:
+            self.count += 1
             node.key = key
             node.value = value
             node.next = LinkedListNode()
             node.next.prev = node
 
-        if self.count / self.capacity > self.load_factor:
-            self.rehash()
+        self.rehashIfRequired()
 
     def deleteNode(self, node):
         if node.prev is None:
@@ -45,4 +45,5 @@ class ChainHashing(HashMap):
     def remove(self, key):
         node = self.getNode(key)
         if node.key is not None:
+            self.count -= 1
             self.deleteNode(node)

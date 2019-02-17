@@ -24,8 +24,7 @@ class HashMap():
         node.key = key
         node.value = value
 
-        if self.count / self.capacity > self.load_factor:
-            self.rehash()
+        self.rehashIfRequired()
 
     def h(self, key):
         return abs(hash(key) % self.capacity)
@@ -43,14 +42,15 @@ class HashMap():
         self.count -= 1
         self[key] = None
 
-    def rehash(self):
-        H = self.H
-        self.capacity = 2 * self.capacity
-        self.H = [LinkedListNode() for _ in range(self.capacity)]
+    def rehashIfRequired(self):
+        if self.getLoadFactor() > self.load_factor:
+            H = self.H
+            self.capacity = 2 * self.capacity
+            self.H = [LinkedListNode() for _ in range(self.capacity)]
 
-        for node in H:
-            if node.key is not None:
-                self[node.key] = node.value
+            for node in H:
+                if node.key is not None:
+                    self[node.key] = node.value
 
     def getLoadFactor(self):
         return self.count / self.capacity

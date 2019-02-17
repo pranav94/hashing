@@ -47,3 +47,4 @@ class QuadraticHashing(HashMap):
 
         self.H[i].key = key
         self.H[i].value = value
+        self.rehashIfRequired()

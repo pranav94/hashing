@@ -11,6 +11,6 @@ class Base(unittest.TestCase):
 
     def tearDown(self):
         elapsed = time.time() - self._started_at
-        print("-------------------------------------------------")
-        print('{},{}'.format(self.shortDescription(), round(elapsed, 4)))
+        print("\n")
+        print('{},{}ms'.format(self.shortDescription(), round(1000*elapsed, 4)))
         print("Final load factor,{}".format(self.h.getLoadFactor()))

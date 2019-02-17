@@ -40,3 +40,5 @@ class LinearHashing(HashMap):
 
         self.H[index].key = key
         self.H[index].value = value
+
+        self.rehashIfRequired()
