@@ -52,34 +52,32 @@ class TestSearch():
 
 
 class TestSet():
+    def __init__(self):
+        self.h = HashMap()
+
     def test_put_10_into_hashmap(self):
         """Set,10"""
-        self.h = HashMap()
         for i in random.sample(range(0, 10), 10):
             self.h[i, random.randint(1, 21)]
 
     def test_put_100_into_hashmap(self):
         """Set,100"""
-        self.h = HashMap()
         for i in random.sample(range(0, 100), 100):
             self.h[i, random.randint(1, 21)]
 
     def test_put_1000_into_hashmap(self):
         """Set,1000"""
-        self.h = HashMap()
         for i in random.sample(range(0, 1000), 1000):
             self.h[i, random.randint(1, 21)]
 
     def test_put_10000_into_hashmap(self):
         """Set,10000"""
-        self.h = HashMap()
         for i in random.sample(range(0, 10000), 10000):
             self.h[i, random.randint(1, 21)]
 
     def test_put_100000_into_hashmap(self):
-        """Set,1000000"""
-        self.h = HashMap()
-        for i in random.sample(range(0, 1000000), 1000000):
+        """Set,100000"""
+        for i in random.sample(range(0, 1000000), 100000):
             self.h[i, random.randint(1, 21)]
 
 
