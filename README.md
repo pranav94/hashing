@@ -8,5 +8,11 @@ Implementation of the following hashing algorithms in Python with empirical anal
 
 Python version: `Python 3.7.0`
 
-Run performance tests:
+To run all the performance tests:
   `make test` or `make`
+
+To run individual performance tests, run any of the following:
+1. `python3 -m unittest -q tests/test_linear_hashing.py`
+2. `python3 -m unittest -q tests/test_chain_hashing.py`
+3. `python3 -m unittest -q tests/test_cuckoo_hashing.py`
+4. `python3 -m unittest -q tests/test_quadratic_hashing.py`
