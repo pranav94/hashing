@@ -3,7 +3,6 @@ import unittest
 import random
 
 from hashing.hashmap import HashMap
-BIG_MAP = HashMap()
 
 
 class Base(unittest.TestCase):
@@ -13,7 +12,8 @@ class Base(unittest.TestCase):
 
     def tearDown(self):
         elapsed = time.time() - self._started_at
-        print('{},{}'.format(self.shortDescription(), round(1000*elapsed, 4)))
+        operation, values = self.shortDescription().split(",")
+        print('Operation: {operation: <6} \t# of Values: {} \tTime taken: {}(ms)'.format(values, round(1000*elapsed, 4), operation=operation))
 
 
 class TestSearch():
@@ -83,7 +83,7 @@ class TestSet():
 
 class TestRemove():
     def __init__(self):
-        self.BIG_MAP = BIG_MAP
+        self.BIG_MAP = HashMap()
 
     def test_remove_10_from_hashmap(self):
         """Remove,10"""
